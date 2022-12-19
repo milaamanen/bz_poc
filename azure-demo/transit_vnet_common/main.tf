@@ -33,7 +33,7 @@ module "vnet" {
 resource "azurerm_network_security_rule" "mgmt" {
   name                        = "vmseries-mgmt-allow-inbound"
   resource_group_name         = azurerm_resource_group.this.name
-  network_security_group_name = "milaamanen-sg-mgmt"
+  network_security_group_name = "bzpoc-sg-mgmt"
   access                      = "Allow"
   direction                   = "Inbound"
   priority                    = 1000

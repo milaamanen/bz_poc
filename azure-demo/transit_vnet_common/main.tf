@@ -66,7 +66,7 @@ module "inbound_lb" {
   resource_group_name               = azurerm_resource_group.this.name
   frontend_ips                      = var.frontend_ips
   enable_zones                      = var.enable_zones
-  network_security_group_name       = "milaamanen-sg-public"
+  network_security_group_name       = "bzpoc-sg-public"
   network_security_allow_source_ips = coalescelist(var.allow_inbound_data_ips, var.allow_inbound_mgmt_ips)
 }
 

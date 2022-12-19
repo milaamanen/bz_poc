@@ -1,19 +1,20 @@
-location             = "North Europe"
-resource_group_name  = "milaamanen-vmseries-rg-vms"
-virtual_network_name = "milaamanen-vnet-vmseries"
+location             = "West Europe"
+resource_group_name  = "bzpoc-vmseries-rg-vms"
+virtual_network_name = "bzpoc-vnet-vmseries"
 address_space        = ["10.110.0.0/16"]
 enable_zones         = true
-tags                 = { environment = "milaamanen-test" }
+tags                 = { environment = "bzpoc" }
 
 network_security_groups = {
-  "milaamanen-sg-mgmt"    = {}
-  "milaamanen-sg-private" = {}
-  "milaamanen-sg-public"  = {}
+  "bzpoc-sg-mgmt"    = {}
+  "bzpoc-sg-private" = {}
+  "bzpoc-sg-public"  = {}
 }
 
 allow_inbound_mgmt_ips = [
-  "82.181.197.31", # Put your own public IP address here
-  "10.255.0.0/24",   # Example Panorama access
+  "134.238.43.11", # Put your own public IP address here
+  "20.224.220.48",   # Example Panorama access
+  "84.207.227.14"
 ]
 
 olb_private_ip = "10.110.0.21"
@@ -33,16 +34,16 @@ route_tables = {
 subnets = {
   "subnet-mgmt" = {
     address_prefixes       = ["10.110.255.0/24"]
-    network_security_group = "milaamanen-sg-mgmt"
+    network_security_group = "bzpoc-sg-mgmt"
   }
   "subnet-private" = {
     address_prefixes       = ["10.110.0.0/24"]
-    network_security_group = "milaamanen-sg-private"
+    network_security_group = "bzpoc-sg-private"
     route_table            = "private_route_table"
   }
   "subnet-public" = {
     address_prefixes       = ["10.110.129.0/24"]
-    network_security_group = "milaamanen-sg-public"
+    network_security_group = "bzpoc-sg-public"
   }
 }
 
@@ -66,8 +67,8 @@ vmseries = {
 
 common_vmseries_version = "10.1.5"
 common_vmseries_sku     = "byol"
-storage_account_name    = "milaamanenpantfstorage"
-storage_share_name      = "milaamanenbootstrapshare"
+storage_account_name    = "bzpocpantfstorage"
+storage_share_name      = "bzpocbootstrapshare"
 
 files = {
   "files/authcodes"    = "license/authcodes" # authcode is required only with common_vmseries_sku = "byol"
